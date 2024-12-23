@@ -1,0 +1,87 @@
+namespace KontactSøgning__1
+{
+    class Kontact
+    {
+        public string[] Names = new string[5];
+        public string[] Adresse = new string[5];
+        public string[] Telefon = new string[5];
+        public void Printinfo(int i)
+        {
+            // printer vi det info vi spurte om
+            Console.WriteLine("Name| " + Names[i] + " |Adresse| " + Adresse[i] + " |Telefonnummer| " + Telefon[i]);
+        }
+    }
+    class Program
+    {
+        Kontact kontact = new Kontact();
+        static void Main(string[] args)
+        {
+            Program p = new Program();
+            p.MainCall();
+        }
+        // Laver Hovde sted
+        public void MainCall()
+        {
+            // While er true så vi kan tjekke vis vi er færdig med fks. 1 eller 2 eller 3
+            while (true)
+            {
+                Console.WriteLine("1|Add |2|Find |3|Delete |4| Exit");
+                int Chos = int.Parse(Console.ReadLine());
+                if (Chos == 1)
+                {
+                    Telføj();
+                }
+                else if (Chos == 2)
+                {
+                    Printinfo();
+                }
+                else if (Chos == 3)
+                {
+                    Delete();
+                }
+                else if (Chos == 4)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Ugyldigt side 404");
+                }
+            }
+        }
+        public void Telføj()
+        {
+            // Så telføjer vi Navn Adresse Telefonnummer
+            Console.WriteLine("Navn: ");
+            string Nametrans = Console.ReadLine();
+            Console.WriteLine("Adresse: ");
+            string Adrestrans = Console.ReadLine();
+            Console.WriteLine("Telefon nummer: ");
+            string teletrans = Console.ReadLine();
+            Console.WriteLine("Kontact 1,2,3,4");
+            int i = int.Parse(Console.ReadLine());
+            // så laver vi copi'er af de rigtige arrays i kontacter class
+            string[] names = kontact.Names;
+            string[] Adresse = kontact.Adresse;
+            string[] Telefon = kontact.Telefon;
+            names[i] = Nametrans;
+            Adresse[i] = Adrestrans;
+            Telefon[i] = teletrans;
+        }
+        public void Printinfo()
+        {
+            // vi tager nummer og så sender vi det vidre til kontact class void Printinfo
+            Console.WriteLine("Number call");
+            int i = int.Parse(Console.ReadLine());
+            kontact.Printinfo(i: i);
+        }
+        public void Delete()
+        {
+            // vi tager Id = Nummer til array så sætter vi det til null
+            Console.WriteLine("Id: ");
+            int i = int.Parse(Console.ReadLine());
+            kontact.Names[i] = null; kontact.Adresse[i] = null; kontact.Telefon[i] = null;
+            Console.WriteLine("Youre Deletesion is Complete the id was = " + i);
+        }
+    }
+}
